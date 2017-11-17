@@ -7,20 +7,16 @@ import sys
 import os
 import time
 
-#clean screen 
+#on nettoie l'ecran
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
-
 # now, to clear the screen
 cls()
 
-# set pin numbering system to board or bcm
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD) # set pin numbering system to board or bcm
+GPIO.setwarnings(False)
 
-# disable warning
-GPIO.setwarnings(False) 
-
-# setup output pins
+# setup our output pins
 GPIO.setup(3,GPIO.OUT)
 GPIO.setup(5,GPIO.OUT)
 GPIO.setup(11,GPIO.OUT)
@@ -37,6 +33,7 @@ print ("On affiche largument passe") #Affiche argument
 print (sys.argv[1]) #Affiche argument 
 print laps  #Affiche argument
 
+
 #set GPIO LOW
 GPIO.output((3,5,11,13,15,19,21,23),GPIO.LOW)
 
@@ -48,7 +45,7 @@ while True:
     	GPIO.output(3,GPIO.HIGH)
     	sleep(laps) # sleep laps
     	GPIO.output((3,5,11,13,15,19,21,23),GPIO.LOW)
-      
+
     	print("Output 5 on")
     	GPIO.output(5,GPIO.HIGH)
     	sleep(laps) # sleep laps
